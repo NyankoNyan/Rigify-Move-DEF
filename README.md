@@ -23,3 +23,7 @@ This script basicaly follows this tutorial
 https://docs.unity3d.com/560/Documentation/Manual/BlenderAndRigify.html
 
 Script inspired by legacy https://github.com/trynyty/Rigify_DeformBones  
+
+**_Screens_**
+![before](Result/before.PNG)
+![after](Result/after.PNG)
