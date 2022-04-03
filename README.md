@@ -1,5 +1,5 @@
 # About this fork
-Removes DEF-bones hierarchy chaos for armature.
+Removes DEF-bones hierarchy chaos for Rigify armature
 
 This is fork from https://github.com/AlexLemminG/Rigify-To-Unity 
 
