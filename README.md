@@ -17,7 +17,7 @@ This is fork from https://github.com/AlexLemminG/Rigify-To-Unity
 5) Do something cool!
 6) p.s. Check "Only Deform Bones" when exporting to exclude unnecessary bones from fbx
 
-I dont read that, but author of original repo left some liniks
+I dont read that, but author of original repo left some links
 
 This script basicaly follows this tutorial  
 https://docs.unity3d.com/560/Documentation/Manual/BlenderAndRigify.html
