@@ -35,7 +35,6 @@ class RigTools_MoveDef(bpy.types.Operator):
         ob = bpy.context.object
 
         remap = self.get_org_remap()
-        remap.update(self.get_parent_remap())
         remap.update(self.get_special_remap())
 
         remove_bones_in_chain = [
@@ -168,12 +167,13 @@ class RigTools_MoveDef(bpy.types.Operator):
             if self.is_def_bone(bone.name):
                 name = self.get_proto_name(bone.name)
                 parent = bone.parent
-                parent_name = self.get_proto_name(parent.name)
-                if parent_name == name:
-                    parent = parent.parent
+                while parent != None:
                     parent_name = self.get_proto_name(parent.name)
-                    if ('DEF-' + parent_name) in ob.data.bones:
-                        remap[bone.name] = 'DEF-' + parent_name
+                    if parent_name != name:
+                        if ('DEF-' + parent_name) in ob.data.bones:
+                            remap[bone.name] = 'DEF-' + parent_name
+                            break
+                    parent = parent.parent
         return remap
 
     def get_special_remap(self):
@@ -181,7 +181,7 @@ class RigTools_MoveDef(bpy.types.Operator):
             'DEF-thigh.L': 'DEF-pelvis.L',
             'DEF-thigh.R': 'DEF-pelvis.R',
             'DEF-upper_arm.L': 'DEF-shoulder.L',
-            'DEF-upper_arm.R': 'DEF-shoulder.R'
+            'DEF-upper_arm.R': 'DEF-shoulder.R',
         }
 
 def register():
