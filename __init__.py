@@ -54,9 +54,14 @@ class RigTools_MoveDef(bpy.types.Operator):
         bpy.ops.object.mode_set(mode='POSE')
         for bone_name in transform_copies:
             bone = ob.pose.bones[bone_name]
-            constraint = bone.constraints.new('COPY_TRANSFORMS')
-            constraint.target = ob
-            constraint.subtarget = bone.parent.name
+            org_name = 'ORG-' + self.get_proto_name(bone_name)
+            if org_name in ob.pose.bones:
+                constraint = bone.constraints.new('COPY_TRANSFORMS')
+                constraint.target = ob
+                constraint.subtarget = org_name
+                constr_count = len(bone.constraints)
+                if constr_count > 1:
+                    bone.constraints.move(constr_count-1, 0)
 
         # apply new parents
         bpy.ops.object.mode_set(mode='EDIT')
